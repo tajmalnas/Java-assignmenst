@@ -3,7 +3,7 @@
 
 //Name : Tajjuddin Malnas
 //Roll : SYITB070
-//No   : Assignment No 2
+//No   : Assignment No 1
 
 package Assign1;
 import java.util.*;

@@ -5,6 +5,10 @@
 // BP, and PF is 0.1% of BP for staff club fund. Generate pay slips for the employees with their gross and net
 // salary.
 
+//Name : Tajjuddin Malnas
+//Roll : SYITB070
+//No   : Assignment No 4
+
 package Assign4;
 import java.util.*;
 
