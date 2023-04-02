@@ -2,6 +2,10 @@
 // hightemp, lowtemp, amount_rain and amount_snow. Use different types of constructors to initialize the
 // objects. Write a program to generate monthly report that displays average of each attribute
 
+//Name : Tajjuddin Malnas
+//Roll : SYITB070
+//No   : Assignment No 2
+
 package Assign2;
 import java.util.*;
 
