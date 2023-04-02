@@ -41,8 +41,8 @@ public class Main {
             System.out.println("Do you Want to continue : 1:YES and 0:NO");
             l=scan.nextInt();
         }while(l==1);
+        scan.close();
     }
-    
 }
 
 class Complex{
