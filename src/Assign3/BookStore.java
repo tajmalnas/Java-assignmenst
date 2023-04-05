@@ -18,19 +18,22 @@ public class BookStore {
         Book b1=new Book();
         Magazine m1=new Magazine();
         do{
+            System.out.println("/ / / / / / / / / / / / / / / / / / / / /  / / / / / \n");
             System.out.println("0:Exit\n");
             System.out.println("1:Books\n");
-            System.out.println("2:Magazinesn\n");
+            System.out.println("2:Magazines\n");
+            System.out.println("3:Number of copies sell (magazines + books)\n");
+            System.out.println("/ / / / / / / / / / / / / / / / / / / / /  / / / / / \n");
             System.out.println("Enter your Choice\n");
             ch=scan.nextInt();
             if(ch==1){
-                System.out.println("* * * * The Books Section are as follow * * * *\n");
+                System.out.println("\n* * * * The Books Section are as follow * * * *\n");
                 do{
                     System.out.println("0:Exit from Books Section\n");
                     System.out.println("1:Enter the details of Books\n");
                     System.out.println("2:Show the details of Books\n");
                     System.out.println("3:Sale some of Books\n");
-                    System.out.println("4:Order the Books\n");
+                    System.out.println("4:Order the Books\n\n");
                     System.out.println("Enter your Choice\n");
                     b=scan.nextInt();
                     if(b==1){
@@ -59,9 +62,9 @@ public class BookStore {
                 do{
                     System.out.println("0:Exit from Magazine Section\n");
                     System.out.println("1:Enter the details of Magazine\n");
-                    System.out.println("1:Show the details of Magazine\n");
-                    System.out.println("2:Sale some of Magazine\n");
-                    System.out.println("3:Order the Magazine\n");
+                    System.out.println("2:Show the details of Magazine\n");
+                    System.out.println("3:Sale some of Magazine\n");
+                    System.out.println("4:Order the Magazine\n");
                     System.out.println("Enter your Choice\n");
                     m=scan.nextInt();
                     if(m==1){
@@ -82,6 +85,14 @@ public class BookStore {
                         m1.recieveIssue(x);
                     }
                 }while(m>0);
+            }
+            if(ch==3){
+                System.out.println("\n* * * * * * * * * * * * * * * * * * * * * * *\n");
+                int x= b1.getCopies()+ m1.getCopies();
+                System.out.println("Total Number of publication sold : "+x+"\n");
+                System.out.println("Total Number of Books sold : "+ b1.getCopies()+"\n");
+                System.out.println("Total Number of Magazines sold : "+m1.getCopies()+"\n");
+                System.out.println("\n* * * * * * * * * * * * * * * * * * * * * * *\n");
             }
         }while(ch>0);
     }
@@ -139,10 +150,17 @@ class Publication{
     }
 
     public void saleCopy(int number){
-        setCopies(copies-number);
-        System.out.println("* * * * * * * * * * * * * * * * \n");
-        System.out.println("Copies Remaining is : "+copies+"\n");
-        System.out.println("* * * * * * * * * * * * * * * * \n");
+        if(getCopies()>0) {
+            setCopies(copies - number);
+            System.out.println("* * * * * * * * * * * * * * * * \n");
+            System.out.println("Copies Remaining is : " + copies + "\n");
+            System.out.println("* * * * * * * * * * * * * * * * \n");
+        }
+        else{
+            System.out.println("* * * * * * * * * * * * * * * * * * * * * * * * \n");
+            System.out.println("Sorry for inconvenience Insufficient stock");
+            System.out.println("* * * * * * * * * * * * * * * * * * * * * * * * \n");
+        }
     }
 
 }
