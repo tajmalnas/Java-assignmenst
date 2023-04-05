@@ -3,7 +3,11 @@
 // has author and order_Copies(). Magazine Class has orderQty, Current_issue() and receive_issue().Write a
 // program to find how many copies of the given books are ordered and display the total sale of publication
 
-package Assign3;
+//Name:tajjuddin malnas
+//Roll:SYITB70
+//Num :Assignment No.4
+//Topic:Polymorphism
+
 import java.util.*;
 public class BookStore {
     public static void main(String[] args) {
@@ -12,6 +16,7 @@ public class BookStore {
         int b=0;
         int m=0;
         Book b1=new Book();
+        Magazine m1=new Magazine();
         do{
             System.out.println("0:Exit\n");
             System.out.println("1:Books\n");
@@ -46,7 +51,7 @@ public class BookStore {
                         order=scan.nextInt();
                         b1.orderCopies(order);
                     }
-                    
+
                 }while(b>0);
             }
             if(ch==2){
@@ -54,18 +59,27 @@ public class BookStore {
                 do{
                     System.out.println("0:Exit from Magazine Section\n");
                     System.out.println("1:Enter the details of Magazine\n");
+                    System.out.println("1:Show the details of Magazine\n");
                     System.out.println("2:Sale some of Magazine\n");
                     System.out.println("3:Order the Magazine\n");
                     System.out.println("Enter your Choice\n");
                     m=scan.nextInt();
                     if(m==1){
-                    
+                        m1.readMagazine();
                     }
                     if(m==2){
-                    
+                        m1.magazineDetails();
                     }
                     if(m==3){
-                        
+                        int x;
+                        System.out.println("Enter number of Books you want to Sell : \n");
+                        x= scan.nextInt();
+                        m1.saleCopy(x);
+                    }
+                    if(m==4){
+                        System.out.println("Enter number of Books you want to Order : \n");
+                        int x= scan.nextInt();
+                        m1.recieveIssue(x);
                     }
                 }while(m>0);
             }
@@ -105,6 +119,14 @@ class Publication{
         System.out.println("Enter Copies of Book\n");
         copies=scan.nextInt();
     }
+    public void readMag(){
+        System.out.println("Enter Title of Magazine\n");
+        title=scan.next();
+        System.out.println("Enter Price of Magazine\n");
+        price=scan.nextInt();
+        System.out.println("Enter Copies of Magazine\n");
+        copies=scan.nextInt();
+    }
 
     public void displayBook(){
         System.out.println("The Book name is : "+title+" \n");
@@ -118,14 +140,16 @@ class Publication{
 
     public void saleCopy(int number){
         setCopies(copies-number);
+        System.out.println("* * * * * * * * * * * * * * * * \n");
         System.out.println("Copies Remaining is : "+copies+"\n");
+        System.out.println("* * * * * * * * * * * * * * * * \n");
     }
 
 }
 
 class Book extends Publication{
     Scanner scan =new Scanner(System.in);
-    private String author; 
+    private String author;
     public void read_book(){
         read();
         System.out.println("Enter Author name : \n");
@@ -142,10 +166,40 @@ class Book extends Publication{
     }
     public void orderCopies(int number){
         setCopies(getCopies()+number);
+        System.out.println("* * * * * * * * * * * * * * * * \n");
         System.out.println("The Numbers of Books : "+getCopies()+"\n");
+        System.out.println("* * * * * * * * * * * * * * * * \n");
     }
 }
 
-// class Magazine extends Publication{
-   
-// } 
+class Magazine extends Publication{
+    private int orderQuantity;
+    private String currentIsssue;
+    public int getOrderQuantity() {
+        return orderQuantity;
+    }
+
+    public void setOrderQuantity(int orderQuantity) {
+        this.orderQuantity = orderQuantity;
+    }
+
+    public void readMagazine(){
+        readMag();
+        System.out.println("Enter Date of Issue of Magazine : \n");
+        currentIsssue=scan.next();
+    }
+
+    public void magazineDetails(){
+        System.out.println("* * * * * * * * * * * * * * * * *");
+        displayMagazine();
+        System.out.println("Date of Issue is : " + currentIsssue +"\n");
+        System.out.println("* * * * * * * * * * * * * * * * *");
+    }
+
+    public void recieveIssue(int number){
+        setOrderQuantity(number+getCopies());
+        System.out.println("* * * * * * * * * * * * * * * * *");
+        System.out.println("Total number of Magazines : "+getOrderQuantity()+"\n");
+        System.out.println("* * * * * * * * * * * * * * * * *");
+    }
+}
